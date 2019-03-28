@@ -1,0 +1,14 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CourseINSemester`()
+
+BEGIN
+
+SELECT Course.LeveLID, Course.Code, Course.Course, Course.ArabicName, Course_semester.SemesterID
+FROM Semester 
+INNER JOIN (Course 
+INNER JOIN Course_semester ON Course.ID = Course_semester.CourseID) ON Semester.ID = Course_semester.SemesterID
+
+WHERE (((Course_semester.SemesterID)=7))
+ORDER BY Course.LeveLID, Course.Code;
+
+
+END
